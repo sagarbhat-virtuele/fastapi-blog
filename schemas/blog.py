@@ -1,23 +1,12 @@
 from typing import Optional
 from pydantic import BaseModel
+from schemas.user import ShowUser
 
 
 class Blog(BaseModel):
     title: str
     body: str
     user_id: int
-
-
-class User(BaseModel):
-    name: str
-    email: str
-    password: str
-
-class ShowUser(BaseModel):
-    name: str
-    email: str
-    class Config():
-        orm_mode = True
 
 
 class ShowBlog(BaseModel):
