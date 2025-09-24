@@ -10,3 +10,4 @@ class User(Base):
     email = Column(String, unique=True, index=True, nullable=False)
     password = Column(String, nullable=False)
     blogs = relationship('Blog', back_populates='creator')
+    profile = relationship("Profile", back_populates="user", uselist=False)  

@@ -6,7 +6,6 @@ class Blog(BaseModel):
     body: str
     user_id: int
 
-# 👇 Minimal User schema to avoid circular imports
 class UserPreview(BaseModel):
     name: str
     email: str
