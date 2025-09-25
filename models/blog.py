@@ -9,3 +9,8 @@ class Blog(Base):
     body = Column(String)
     user_id = Column(Integer, ForeignKey('users.id'))
     creator = relationship('User', back_populates='blogs')
+    likes = relationship("Like", back_populates="blog", cascade="all, delete-orphan")
+
+    @property
+    def liked_by(self):
+        return [like.user for like in self.likes]

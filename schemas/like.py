@@ -1,22 +1,26 @@
-from typing import List, Optional
 from pydantic import BaseModel
 
-class Blog(BaseModel):
-    title: str
-    body: str
-    user_id: int
-
 class UserPreview(BaseModel):
+    id: int
     name: str
     email: str
 
     class Config:
         from_attributes = True
 
-class ShowBlog(BaseModel):
+class BlogPreview(BaseModel):
+    id: int
     title: str
     body: str
-    creator: Optional[UserPreview]
-    liked_by: List[UserPreview] = []
+
+    class Config:
+        from_attributes = True
+
+
+class ShowLike(BaseModel):
+    id: int
+    user: UserPreview
+    blog: BlogPreview
+
     class Config:
         from_attributes = True

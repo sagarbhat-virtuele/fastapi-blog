@@ -31,6 +31,7 @@ class ShowUser(BaseModel):
     email: str
     blogs: List[BlogPreview] = []
     profile: Optional[ProfilePreview] = None   
+    liked_blogs: List[Optional[BlogPreview]] = [] 
 
     class Config:
         from_attributes = True

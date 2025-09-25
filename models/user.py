@@ -11,3 +11,8 @@ class User(Base):
     password = Column(String, nullable=False)
     blogs = relationship('Blog', back_populates='creator')
     profile = relationship("Profile", back_populates="user", uselist=False)  
+    likes = relationship("Like", back_populates="user", cascade="all, delete-orphan")
+
+    @property
+    def liked_blogs(self):
+        return [like.blog for like in self.likes]
