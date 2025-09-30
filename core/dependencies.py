@@ -1,4 +1,4 @@
-# dependencies.py
+# core/dependencies.py
 from fastapi import Depends
 from sqlalchemy.orm import Session
 from core.database import get_db
@@ -15,7 +15,7 @@ def get_blog_service(db: Session = Depends(get_db)) -> BlogService:
 def get_user_service(db: Session = Depends(get_db)) -> UserService:
     return UserService(db)
 
-def get_profile_service(db=Depends(get_db)) -> ProfileService:
+def get_profile_service(db: Session = Depends(get_db)) -> ProfileService:
     return ProfileService(db)
 
 def get_like_service(db: Session = Depends(get_db)) -> LikeService:  
